@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluemins - Open Positions</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0088cc;
+            --secondary-color: #005588;
+            --accent-color: #00aaff;
+            --text-color: #ffffff;
+            --dark-text: #333333;
+            --background: #000a1a;
+            --table-header: #005588;
+            --table-row-odd: #001530;
+            --table-row-even: #000a1a;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--background);
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 10, 30, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 136, 204, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--primary-color);
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* --- Table Styles --- */
+        .job-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            table-layout: fixed; /* Helps with fixed column widths */
+        }
+
+        .job-table th, .job-table td {
+            padding: 12px 15px;
+            border: 1px solid var(--secondary-color);
+            text-align: left;
+            word-wrap: break-word; /* Ensure long text wraps */
+        }
+
+        .job-table th {
+            background-color: var(--table-header);
+            color: var(--text-color);
+            font-weight: bold;
+            font-size: 1rem;
+            position: sticky;
+            top: 0;
+        }
+
+        .job-table tbody tr:nth-child(odd) {
+            background-color: var(--table-row-odd);
+        }
+
+        .job-table tbody tr:nth-child(even) {
+            background-color: var(--table-row-even);
+        }
+
+        .job-table tbody tr:hover {
+            background-color: rgba(0, 136, 204, 0.2);
+        }
+
+        .status-open {
+            color: #4CAF50; /* Green */
+            font-weight: bold;
+        }
+
+        .status-hired {
+            color: #FF9800; /* Amber */
+        }
+        
+        .salary {
+            color: var(--accent-color);
+        }
+/* --- Footer Styles --- */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 20px;
+    border-top: 1px solid var(--secondary-color);
+}
+
+    /* Style for the Contact Inquiry text */
+    .footer-contact-info {
+        /* Change this value to your desired font size */
+        font-size: 1.2rem; 
+        
+        /* Optional: Make it bold for emphasis */
+        font-weight: bold; 
+        
+        /* Optional: Change color to the accent blue */
+        color: var(--accent-color); 
+    }
+    
+    /* Style for the Copyright text (optional) */
+    .footer-copyright {
+        font-size: 0.85rem;
+        color: #99aaff;
+        margin-bottom: 5px;
+    }
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 1000px) {
+            .job-table, .job-table tbody, .job-table thead, .job-table th, .job-table td, .job-table tr {
+                display: block;
+            }
+            .job-table thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            .job-table tr {
+                margin-bottom: 20px;
+                border: 1px solid var(--primary-color);
+                border-radius: 5px;
+            }
+            .job-table td {
+                border: none;
+                border-bottom: 1px solid #333;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            .job-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 45%;
+                padding-left: 10px;
+                font-weight: bold;
+                color: var(--accent-color);
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-button"><i class="fas fa-chevron-left"></i> Back to Homepage</a>
+        
+        <h1>Bluemins: All Positions</h1>
+<table class="job-table">
+    <thead>
+        <tr>
+            <th>Positions</th>
+            <th style="width: 20%;">Job Description</th>
+            <th style="width: 20%;">Minimum Qualification</th>
+            <th style="width: 20%;">Good to have</th>
+            <!--<th>Average Salary Range</th>-->
+            <th>Current Status</th>
+        </tr>
+    </thead>
+    <tbody>
+    
+        <tr>
+            <td data-label="Positions">Manager</td>
+            <td data-label="Job Description">Responsible for overseeing all plant operations, ensuring compliance with safety and quality standards, supervising staff, managing inventory, and reporting to company leadership.</td>
+            <td data-label="Minimum Qualification">Graduation in any discipline  3+ years of management experience in manufacturing, preferably water or food sector</td>
+            <td data-label="Good to have">Diploma/Degree in Engineering or Management  Experience in water treatment industry  Proficiency in Odia/Hindi for local communication</td>
+            <!--<td data-label="Average Salary Range">8-10K</td>-->
+            <td data-label="Current Status" class="status-open">Open</td>
+        </tr>
+        
+        <tr>
+            <td data-label="Positions">Operator</td>
+            <td data-label="Job Description">Operate and monitor RO and DM plants, conduct routine maintenance, ensure water treatment quality, and maintain safety and hygiene standards.</td>
+            <td data-label="Minimum Qualification">ITI/Diploma in Mechanical/Electrical/Chemical/Relevant field  Basic understanding of water purification processes  1+ years of experience in treatment plant operations</td>
+            <td data-label="Good to have">Knowledge of laboratory testing and troubleshooting  Experience with automated control panels</td>
+            <!--<td data-label="Average Salary Range">15-18K</td>-->
+            <td data-label="Current Status" class="status-open">Open </td>
+        </tr>
+        
+        <tr>
+            <td data-label="Positions">Lab Assistant</td>
+            <td data-label="Job Description">Perform collection and preparation of water samples from different stages of the RO and DM process for analysis and record-keeping. Assist with routine water quality tests—physical, chemical, and microbiological—as per FSSAI standards. Prepare laboratory equipment, reagents, and glassware; maintain cleanliness and calibration; document results and equipment status in registers and ERP. Ensure hygiene and GMP compliance, support in sample storage/disposal protocols, and assist with emergency testing or process validation.</td>
+            <td data-label="Minimum Qualification">10th pass with 2 years of relevant lab experience  B.Sc. in Chemistry/Biochemistry/Microbiology p</td>
+            <td data-label="Good to have">Training in food safety standards and FSSAI/ISO procedures.​  Computer basics and ERP data management.​  Experience in water/food lab testing and familiarity with preparation of reagents and calibration.​  Knowledge of HACCP, QMS, and GMP compliance.​  Basic communication skills in Odia/Hindi for local reporting.</td>
+            <!--<td data-label="Average Salary Range">8-10K</td>-->
+            <td data-label="Current Status" class="status-open">Open </td>
+        </tr>
+        
+        <tr>
+            <td data-label="Positions">Marketing Executive</td>
+            <td data-label="Job Description">Develop and implement marketing strategies to promote packaged drinking water in Western Odisha.​  Conduct market research, identify potential customers (retailers, distributors, institutions), and expand brand reach.​  Organize sales outreach activities and field visits in rural and semi-urban areas.​  Manage social media pages, online campaigns, and participate in local events.​  Track competitor activity and collect customer feedback for continuous improvement.​  Prepare reports on outreach, conversions, and customer engagement.</td>
+            <td data-label="Minimum Qualification">Graduation in any discipline  Basic computer skills (MS Office, internet usage)  Proficiency in Odia language</td>
+            <td data-label="Good to have">MBA or Diploma in Marketing/Sales  Prior experience in FMCG, water industry, or rural marketing.​  Knowledge of local culture and consumer behavior in Western Odisha  Social media management or digital marketing skills  Strong spoken and written communication (Odia, Hindi, Sambalpuri)</td>
+            <!--<td data-label="Average Salary Range">8-10K  (+Incentive)</td>-->
+            <td data-label="Current Status" class="status-hired">Hired</td>
+        </tr>
+        
+        <tr>
+            <td data-label="Positions">Account [Tally]</td>
+            <td data-label="Job Description">Maintain plant accounts, process billing, payroll, stock records, and ensure compliance with financial standards using Tally ERP software.</td>
+            <td data-label="Minimum Qualification">B.Com or Diploma in Accountancy  Proficiency in Tally ERP</td>
+            <td data-label="Good to have">1+ years of manufacturing/industrial accounts  GST and statutory compliance experience  Knowledge of Odia for handling local vendors</td>
+            <!--<td data-label="Average Salary Range">6-7K</td>-->
+            <td data-label="Current Status" class="status-hired">Hired</td>
+        </tr>
+        
+        <tr>
+            <td data-label="Positions">Blow Machine Helper</td>
+            <td data-label="Job Description">Support PET bottle production, assist with machine startup, clean and maintain equipment, and stand in for main blow machine operator as required.</td>
+            <td data-label="Minimum Qualification">ITI/Diploma in Mechanical or Fitter trade  Ability to handle industrial machinery</td>
+            <td data-label="Good to have">Experience with blow molding machines  Knowledge of safety protocols</td>
+            <!--<td data-label="Average Salary Range">7-8K</td>-->
+            <td data-label="Current Status" class="status-hired">Hired</td>
+        </tr>
+        
+        <tr>
+            <td data-label="Positions">Filling Machine</td>
+            <td data-label="Job Description">Operate and maintain water filling/packaging machines, monitor output quality, troubleshoot minor issues, and uphold plant hygiene standards.</td>
+            <td data-label="Minimum Qualification">ITI/Diploma/12th pass  Prior machine operation experience preferred</td>
+            <td data-label="Good to have">1+ years in bottling/packaging industry  Basic mechanical skills</td>
+            <!--<td data-label="Average Salary Range">6-7K</td>-->
+            <td data-label="Current Status" class="status-hired">Hired</td>
+        </tr>
+        
+        <tr>
+            <td data-label="Positions">Plant staff</td>
+            <td data-label="Job Description">Assist in plant housekeeping, general maintenance, loading/unloading, raw material handling, and production support</td>
+            <td data-label="Minimum Qualification">10th Pass</td>
+            <td data-label="Good to have">Previous experience in manufacturing/production  Willingness to work flexible shifts</td>
+            <!--<td data-label="Average Salary Range">6-7K</td>-->
+            <td data-label="Current Status" class="status-hired">Hired</td>
+        </tr>
+        
+        <tr>
+            <td data-label="Positions">Plant staff</td>
+            <td data-label="Job Description">Assist in plant housekeeping, general maintenance, loading/unloading, raw material handling, and production support</td>
+            <td data-label="Minimum Qualification">10th Pass</td>
+            <td data-label="Good to have">Previous experience in manufacturing/production</td>
+            <!--<td data-label="Average Salary Range">6-7K</td>-->
+            <td data-label="Current Status" class="status-hired">Hired</td>
+        </tr>
+        
+        <tr>
+            <td data-label="Positions">Delivery Staff</td>
+            <td data-label="Job Description">Handle finished goods delivery to clients, ensure loading/unloading safety, maintain delivery records, and communicate with clients and plant staff.</td>
+            <td data-label="Minimum Qualification">10th Pass Valid Driving License Shall be able to drive 3-wheeler Auto</td>
+            <td data-label="Good to have">Previous experience as delivery personnel  Familiarity with Western Odisha routes  Customer service skills</td>
+            <!--<td data-label="Average Salary Range">7-8K</td>-->
+            <td data-label="Current Status" class="status-open">Open </td>
+        </tr>
+        
+        <tr>
+            <td data-label="Positions">Delivery Staff</td>
+            <td data-label="Job Description">Handle finished goods delivery to clients, ensure loading/unloading safety, maintain delivery records, and communicate with clients and plant staff.</td>
+            <td data-label="Minimum Qualification">10th Pass Valid Driving License Shall be able to drive 2-wheeler Scooty</td>
+            <td data-label="Good to have">Previous experience as delivery personnel  Familiarity with Western Odisha routes  Customer service skills</td>
+            <!--<td data-label="Average Salary Range">5-6K</td>-->
+            <td data-label="Current Status" class="status-open">Open </td>
+        </tr>
+        
+        <tr>
+            <td data-label="Positions">Security</td>
+            <td data-label="Job Description">Safeguard plant premises, monitor entry/exit, maintain security records, assist in emergency protocols, and report suspicious activities.</td>
+            <td data-label="Minimum Qualification">10th Pass</td>
+            <td data-label="Good to have">Experience in industrial security  Basic ability to use surveillance and communication tools</td>
+            <!--<td data-label="Average Salary Range">8-10K</td>-->
+            <td data-label="Current Status" class="status-open">Open </td>
+        </tr>
+        
+    </tbody>
+</table>
+        <footer>
+            <p class="footer-contact-info">For job application inquiries, please send your resume to contact@bluemins.life</p>
+            <p class="footer-copyright">&copy; 2025 Bluemins. All Rights Reserved.</p>
+    </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bluemins | Premium Water</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #000814;
+            --accent-blue: #0099ff;
+            --accent-green: #25D366;
+            --glow-color: rgba(0, 153, 255, 0.6);
+            --glow-green: rgba(37, 211, 102, 0.4);
+            --card-bg: #05162a;
+            --muted-text: #3b5a7a;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-bg);
+            background: radial-gradient(circle at center, #0a2342 0%, #000814 100%);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 420px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .water-drop {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 25px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,5 C50,5 15,55 15,75 C15,90 30,100 50,100 C70,100 85,90 85,75 C85,55 50,5 50,5 Z' fill='%230099ff' /%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: drop-shadow(0 0 10px var(--glow-color));
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 0 0 10px #fff, 0 0 20px var(--accent-blue), 0 0 30px var(--accent-blue);
+            text-transform: uppercase;
+        }
+
+        .action-card {
+            background-color: var(--card-bg);
+            border-radius: 30px;
+            padding: 35px 20px;
+            border: 1px solid rgba(0, 153, 255, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .phone-display {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1.3;
+            margin-bottom: 25px;
+            display: block;
+            white-space: nowrap;
+            letter-spacing: 1px;
+        }
+
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+            padding: 16px 0;
+            width: 90%;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: transform 0.2s, filter 0.2s;
+            animation: pulse-blue 3s infinite;
+        }
+
+        .call-btn {
+            background-color: var(--accent-blue);
+            box-shadow: 0 0 20px var(--glow-color);
+        }
+
+        .whatsapp-btn {
+            background-color: var(--accent-green);
+            box-shadow: 0 0 20px var(--glow-green);
+            animation: pulse-green 3s infinite;
+        }
+
+        @keyframes pulse-blue {
+            0% { box-shadow: 0 0 15px var(--glow-color); }
+            50% { box-shadow: 0 0 30px var(--accent-blue); }
+            100% { box-shadow: 0 0 15px var(--glow-color); }
+        }
+
+        @keyframes pulse-green {
+            0% { box-shadow: 0 0 15px var(--glow-green); }
+            50% { box-shadow: 0 0 30px var(--accent-green); }
+            100% { box-shadow: 0 0 15px var(--glow-green); }
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+            filter: brightness(0.9);
+        }
+
+        .footer-tagline {
+            font-size: 0.7rem;
+            color: var(--muted-text);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="water-drop"></div>
+        
+        <div class="logo">BLUEMINS</div>
+
+        <div class="action-card">
+            <div class="phone-display">+91 70904 43303</div>
+            
+            <div class="btn-group">
+                <a href="tel:+917090443303" class="btn call-btn">
+                    <i class="fas fa-phone-alt"></i> CALL NOW
+                </a>
+
+                <a href="https://wa.me/917090443303?text=Hi%20Bluemins,%20I'd%20like%20to%20order%20water." 
+                   target="_blank" 
+                   class="btn whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> WHATSAPP
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-tagline">
+            PREMIUM PACKAGED DRINKING WATER
+        </div>
+    </div>
+
+</body>
+</html>

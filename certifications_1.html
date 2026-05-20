@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certifications - Bluemins - Product - 1 L  </title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0088cc;
+            --accent-color: #00aaff;
+            --background: #000a1a;
+            --card-bg: rgba(0, 136, 204, 0.1);
+            --text-color: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--background);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Matches main page background feel */
+        .stars-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #001a33 0%, #000a1a 100%);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .back-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover {
+            text-shadow: 0 0 10px var(--accent-color);
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px var(--accent-color);
+            margin: 10px 0;
+            background: linear-gradient(to bottom, #ffffff, #00aaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            color: #aaddff;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* Certification Grid */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card {
+            background: var(--card-bg);
+            border: 1px solid var(--primary-color);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(0, 170, 255, 0.4);
+            border-color: var(--accent-color);
+        }
+
+        .cert-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px var(--primary-color));
+        }
+
+        .cert-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .cert-org {
+            color: var(--accent-color);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .cert-desc {
+            font-size: 0.85rem;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .view-btn {
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 8px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .view-btn:hover {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-bg"></div>
+
+    <div class="container">
+        <div class="header-section">
+            <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Home</a>
+            <h1>Licenses & Certifications</h1>
+            <p class="tagline">Certified excellence in every drop.</p>
+        </div>
+
+        <div class="cert-grid">
+
+			<div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                <h2 class="cert-title">FSSAI Food Safety License</h2>
+                <span class="cert-org">Health & Family Welfare Department, Odisha </span>
+                <p class="cert-desc">Officially licensed under the Food Safety and Standards Act, 2006, ensuring our operations meet national health and quality standards.</p>
+                <a href="https://drive.google.com/file/d/1_mvxdACDluvneg6RSM1Xgo4c0A83W4Og/view" class="view-btn">View Document</a>
+            </div>	
+			<div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                <h2 class="cert-title">ISO 9001:2015 Certified</h2>
+                <span class="cert-org">Quality Management System (QMS) </span>
+                <p class="cert-desc">Internationally recognized for our commitment to consistent quality, streamlined operations, and continuous improvement.</p>
+                <a href="https://drive.google.com/file/d/1E0A7-rHCeUO_An3ic2Ei6LZGyWrbTFhE/view" class="view-btn">View Document</a>
+            </div>	
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                <h2 class="cert-title">Ground Water Exemption Certificate</h2>
+                <span class="cert-org">Central Ground Water Authority (CGWA)</span>
+                <p class="cert-desc">Official exemption granted by the CGWA, certifying that our water extraction levels fall within the permissible limits and are exempt from standard NOC requirements under current environmental guidelines.</p>
+                <a href="https://drive.google.com/file/d/1dOL9hAQyRPZ3oj-89L_qYK-ORRZAH3aG/view" class="view-btn">View Document</a>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-check-circle"></i></div>
+                <h2 class="cert-title">Raw Water Analysis Report</h2>
+                <span class="cert-org">NABL Accredited Laboratory</span>
+                <p class="cert-desc">Detailed assessment of water source health and purity. This report validates our commitment to high-quality water management and zero-contamination standards.</p>
+                <a href="https://drive.google.com/file/d/1uSSdQxmNGgMYLDaMVJKqjyBIUwGYuiF4/view" class="view-btn">View Document</a>
+            </div>
+
+			<div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-award"></i></div>
+                <h2 class="cert-title">Product Water Quality Certification</h2>
+                <span class="cert-org">NABL Accredited Laboratory</span>
+                <p class="cert-desc">A rigorous quality assessment of our final water output. This certificate verifies optimal pH levels, balanced mineral content, and a 100% absence of harmful pathogens or chemical residues, ensuring premium safety and taste.</p>
+                <a href="https://drive.google.com/file/d/1_9xJxQ0EKgM2L1YIRS4-WlPvEPzRQJND/view" class="view-btn">View Document</a>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-tint"></i></div>
+                <h2 class="cert-title">NAC Compliance Certification</h2>
+                <span class="cert-org">Notified Area Council (Local Administration)</span>
+                <p class="cert-desc">Official clearance issued by the Notified Area Council, verifying that our operations adhere to local administrative guidelines, zoning laws, and public safety regulations.</p>
+                <a href="https://drive.google.com/file/d/1xmFN1bMggjZ3JD78EE5Qou1lbewrNzzB/view" class="view-btn">View Document</a>
+            </div>
+
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-leaf"></i></div>
+                <h2 class="cert-title">GST Registration Certificate </h2>
+                <span class="cert-org">Department of Revenue, Ministry of Finance</span>
+                <p class="cert-desc">Official certification of our compliance with the Goods and Services Tax Act, authorizing legal business operations and tax collection in accordance with national regulations.</p>
+                <a href="https://drive.google.com/file/d/1AdvbSJilj4ymoBQIKCO21xpgkT32AiEp/view" class="view-btn">View Document</a>
+            </div>
+			
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                <h2 class="cert-title">Consent to Operate (CTO)</h2>
+                <span class="cert-org">State Pollution Control Board (SPCB)</span>
+                <p class="cert-desc">Official authorization certifying our adherence to national environmental standards. This document confirms that our facility effectively manages air emissions and water effluents in compliance with the Air and Water Pollution Acts</p>
+                <a href="https://drive.google.com/file/d/14qYO-MH1PyJ8jUAReF_XrTtta57qDf5e/view" class="view-btn">View Document</a>
+            </div>
+			
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                <h2 class="cert-title">Consent to Establish (CTE)</h2>
+                <span class="cert-org">State Pollution Control Board</span>
+                <p class="cert-desc">Initial environmental authorization granted under the Air and Water Acts, permitting the commencement of site construction and infrastructure development in accordance with prescribed pollution control norms.</p>
+                <a href="https://drive.google.com/file/d/1Yk4FhCgVZ1O_gz7twvUuVnKr4lHdtbaP/view" class="view-btn">View Document</a>
+            </div>		
+
+            <div class="cert-card">
+                <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                <h2 class="cert-title">Business Trade License</h2>
+                <span class="cert-org">Urban Local Body </span>
+                <p class="cert-desc">Official authorization granted by the local municipal authorities, permitting the legal operation of commercial activities at our premises while ensuring compliance with safety and public health standards.</p>
+                <a href="https://drive.google.com/file/d/1NoJvBSwRdJuTjNvQ-yaoO69UlWHYj-YG/view" class="view-btn">View Document</a>
+            </div>	
+			
+        </div>
+
+        <footer>
+            &copy; 2025 Bluemins. All Documents Verified.
+        </footer>
+    </div>
+</body>
+</html>
