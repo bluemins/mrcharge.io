@@ -3,87 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr.Charge | Distilled Water for Battery Life</title>
+    <title>Mr.Charge | Industrial Distilled Water</title>
     <style>
-        :root { --battery-yellow: #f1c40f; --industrial-grey: #2c3e50; --bg-dark: #1a1a1a; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: white; }
-        
-        /* Game Area */
-        #game-area { width: 100%; height: 400px; background: #000; position: relative; overflow: hidden; border-bottom: 4px solid var(--battery-yellow); cursor: none; }
-        #player { position: absolute; width: 80px; height: 60px; background: var(--industrial-grey); border: 2px solid var(--battery-yellow); border-radius: 5px; bottom: 10px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10; }
-        .drop { position: absolute; width: 20px; height: 30px; background: #3498db; border-radius: 0 0 10px 10px; }
+        :root { --y: #f1c40f; --g: #2c3e50; --b: #3498db; --dark: #0f0f0f; }
+        body { margin: 0; font-family: 'Inter', sans-serif; background: var(--dark); color: #fff; }
 
-        /* Branding & Gallery Section */
-        .content-section { padding: 50px 20px; max-width: 1000px; margin: auto; text-align: center; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
-        .placeholder-img { background: #333; height: 200px; display: flex; align-items: center; justify-content: center; border: 2px dashed #555; }
-        
-        .social-links { margin-top: 40px; }
-        .social-links a { color: var(--battery-yellow); font-size: 1.5rem; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        /* Enhanced Game Area */
+        #game-area { 
+            width: 100%; height: 350px; background: linear-gradient(to bottom, #1a1a1a, #000); 
+            position: relative; overflow: hidden; border-bottom: 3px solid var(--y); cursor: none;
+        }
+        #player { 
+            position: absolute; width: 90px; height: 70px; bottom: 20px; 
+            background: rgba(44, 62, 80, 0.8); border: 2px solid var(--y); 
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; 
+            font-size: 35px; backdrop-filter: blur(5px); transition: transform 0.05s;
+        }
+        .drop { position: absolute; width: 15px; height: 25px; background: var(--b); border-radius: 0 0 15px 15px; box-shadow: 0 0 10px var(--b); }
+        #score { position: absolute; top: 20px; left: 20px; font-size: 20px; font-weight: bold; color: var(--y); }
+
+        /* Gallery Grid */
+        .container { max-width: 1000px; margin: auto; padding: 40px 20px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { height: 220px; background: #222; border-radius: 10px; overflow: hidden; border: 1px solid #333; transition: 0.3s; }
+        .card:hover { border-color: var(--y); transform: translateY(-5px); }
+        .card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+
+        /* Social Section */
+        .footer { text-align: center; padding: 50px; border-top: 1px solid #333; }
+        .btn { padding: 12px 30px; background: var(--y); color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; margin: 10px; }
     </style>
 </head>
 <body>
 
     <div id="game-area">
+        <div id="score">Bottles Caught: 0</div>
         <div id="player">🔋</div>
     </div>
 
-    <div class="content-section">
-        <h1 style="color: var(--battery-yellow);">MR.CHARGE</h1>
-        <p>Premium Distilled Water for Lead-Acid & Solar Battery Systems</p>
+    <div class="container">
+        <h1 style="text-align: center; color: var(--y);">MR.CHARGE SOLUTIONS</h1>
+        <p style="text-align: center;">Keeping your Solar and Lead-Acid systems charged with pure distilled water.</p>
 
-        <!-- Gallery Section -->
         <div class="gallery">
-            <div class="placeholder-img">Lead-Acid Battery Image</div>
-            <div class="placeholder-img">Solar Battery Array Image</div>
-            <div class="placeholder-img">Mr.Charge Product Bottle</div>
-        </div>
-
-        <!-- Social Links -->
-        <div class="social-links">
-            <a href="https://facebook.com/mrcharge0">Facebook</a>
-            <a href="#">WhatsApp</a>
-            <a href="#">Instagram</a>
+            <div class="card"><img src="https://images.unsplash.com/photo-1595052737606-538965045a55?w=600" alt="Battery"></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1509391366360-2add85a4a27a?w=600" alt="Solar"></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1584068593452-f179b5c2a3e5?w=600" alt="Water"></div>
         </div>
     </div>
 
-    <script>
-        const gameArea = document.getElementById('game-area');
-        const player = document.getElementById('player');
-        let playerX = window.innerWidth / 2;
+    <div class="footer">
+        <a href="https://facebook.com/mrcharge0" class="btn">VISIT FACEBOOK</a>
+        <a href="#" class="btn" style="background: var(--b); color: white;">WHATSAPP US</a>
+    </div>
 
-        // Move player
+    <script>
+        let score = 0;
+        const player = document.getElementById('player');
+        const scoreEl = document.getElementById('score');
+
+        // Movement
         window.addEventListener('mousemove', (e) => {
-            playerX = e.clientX - 40;
-            if(playerX < 0) playerX = 0;
-            if(playerX > window.innerWidth - 80) playerX = window.innerWidth - 80;
-            player.style.left = playerX + 'px';
+            let x = e.clientX - 45;
+            player.style.left = Math.max(0, Math.min(x, window.innerWidth - 90)) + 'px';
         });
 
-        // Drop Logic
-        function createDrop() {
+        // Game Loop
+        setInterval(() => {
             const drop = document.createElement('div');
             drop.className = 'drop';
             drop.style.left = Math.random() * (window.innerWidth - 20) + 'px';
-            drop.style.top = '-30px';
-            gameArea.appendChild(drop);
-
-            let top = -30;
-            let timer = setInterval(() => {
-                top += 5;
-                drop.style.top = top + 'px';
-
-                // Simple Collision
-                if (top > 330 && top < 360 && parseInt(drop.style.left) > playerX - 20 && parseInt(drop.style.left) < playerX + 80) {
+            document.getElementById('game-area').appendChild(drop);
+            
+            let pos = 0;
+            let fall = setInterval(() => {
+                pos += 8;
+                drop.style.top = pos + 'px';
+                
+                // Collision Detection
+                let pRect = player.getBoundingClientRect();
+                let dRect = drop.getBoundingClientRect();
+                
+                if (dRect.top > pRect.top && dRect.left > pRect.left && dRect.left < pRect.right) {
+                    score++;
+                    scoreEl.innerText = "Bottles Caught: " + score;
                     drop.remove();
-                    clearInterval(timer);
+                    clearInterval(fall);
                 }
-
-                if (top > 400) { drop.remove(); clearInterval(timer); }
+                
+                if (pos > 350) { drop.remove(); clearInterval(fall); }
             }, 30);
-        }
-
-        setInterval(createDrop, 1200);
+        }, 1000);
     </script>
 </body>
 </html>
