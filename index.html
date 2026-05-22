@@ -56,7 +56,33 @@
             <div class="card"><img src="water2.jpg" alt="Solar"></div>
         </div>
     </div>
-
+    <!-- Add this section before the <div class="footer"> -->
+    <div class="container" style="max-width: 600px; background: #1a1a1a; padding: 30px; border-radius: 15px; border: 1px solid #333;">
+        <h2 style="color: var(--y); text-align: center;">ORDER / INQUIRY</h2>
+        <form id="order-form" style="display: flex; flex-direction: column; gap: 15px;">
+            <input type="text" placeholder="Full Name" required style="padding: 12px; background: #333; border: none; color: white;">
+            <input type="tel" placeholder="Phone Number" required style="padding: 12px; background: #333; border: none; color: white;">
+            <textarea placeholder="Message/Requirements" rows="4" style="padding: 12px; background: #333; border: none; color: white;"></textarea>
+            <button type="submit" class="btn" style="width: 100%; border: none; cursor: pointer;">SEND INQUIRY</button>
+        </form>
+    </div>
+    <!-- Opt-in notification section -->
+    <div class="opt-in-section">
+        <div class="opt-in-text">
+            I hereby authorise to send notifications via SMS, Email, RCS and others as per 
+            <a href="terms_of_service.html" target="_blank">Terms of Service</a> | <a href="privacy_policy.html" target="_blank">Privacy Policy</a>.
+        </div>
+        <div class="radio-group">
+            <label>
+                <input type="radio" id="opt-in-yes" name="notification-consent" value="yes" required>
+                Yes
+            </label>
+            <label>
+                <input type="radio" id="opt-in-no" name="notification-consent" value="no" required>
+                No
+            </label>
+        </div>
+    </div>
     <div class="footer">
         <a href="https://facebook.com/mrcharge0" class="btn">FOLLOW ON FACEBOOK</a>
         <a href="#" class="btn" style="background: var(--b); color: white;">WHATSAPP ORDER</a>
