@@ -3,33 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr.Charge - Pure Distilled Water</title>
+    <title>Mr.Charge | Distilled Water for Battery Life</title>
     <style>
         :root {
-            --primary-color: #2c3e50; /* Slate/Industrial */
-            --secondary-color: #34495e;
-            --accent-color: #3498db;  /* Clean Blue */
-            --text-color: #ffffff;
-            --background: #f4f7f6;    /* Light clean grey */
-            --dark-text: #2c3e50;
+            --battery-yellow: #f1c40f;
+            --industrial-grey: #2c3e50;
+            --accent-blue: #3498db;
+            --bg-dark: #1a1a1a;
         }
         
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--background); color: var(--dark-text); }
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: var(--bg-dark); color: white; }
         
-        #game-area { width: 100%; height: 60vh; background: linear-gradient(to bottom, #bdc3c7, #2c3e50); position: relative; overflow: hidden; }
+        /* Game Area: Industrial Battery Theme */
+        #game-area { width: 100%; height: 50vh; background: #000; position: relative; overflow: hidden; border-bottom: 5px solid var(--battery-yellow); }
         
-        #player { position: absolute; width: 60px; height: 60px; background: white; border-radius: 50%; bottom: 20px; transition: transform 0.1s; box-shadow: 0 0 15px rgba(255,255,255,0.5); }
+        #player { 
+            position: absolute; width: 70px; height: 50px; background: var(--industrial-grey); 
+            border: 2px solid var(--battery-yellow); border-radius: 5px; bottom: 20px; 
+            transition: transform 0.1s; display: flex; align-items: center; justify-content: center;
+        }
+        #player::after { content: '🔋'; font-size: 20px; }
 
-        .hero { text-align: center; padding: 50px 20px; }
-        .logo { font-size: 3.5rem; font-weight: 900; color: var(--primary-color); letter-spacing: 2px; }
-        
-        .signup-form { max-width: 500px; margin: 40px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; }
-        button { background-color: var(--accent-color); color: white; border: none; padding: 15px 30px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 1rem; }
-        button:hover { background-color: #2980b9; }
+        .battery-drop {
+            position: absolute; width: 30px; height: 40px;
+            background: var(--accent-blue); clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+        }
 
-        @media (max-width: 768px) { .logo { font-size: 2.5rem; } }
+        .hero { text-align: center; padding: 40px 20px; }
+        .logo { font-size: 3rem; font-weight: 900; color: var(--battery-yellow); text-transform: uppercase; }
+        
+        .signup-form { max-width: 450px; margin: 20px auto; padding: 25px; background: #222; border-left: 5px solid var(--battery-yellow); }
+        input { width: 100%; padding: 12px; margin: 10px 0; background: #333; border: 1px solid #444; color: white; }
+        button { background-color: var(--battery-yellow); color: black; font-weight: bold; border: none; padding: 15px; cursor: pointer; width: 100%; }
     </style>
 </head>
 <body>
@@ -39,41 +44,43 @@
     </div>
 
     <div class="hero">
-        <div class="logo">MR.CHARGE</div>
-        <p>Premium Distilled Water - Purity at < 10 TDS</p>
+        <div class="logo">Mr.Charge</div>
+        <p>Pure Distilled Water for Lead-Acid Battery Longevity</p>
     </div>
 
     <div class="signup-form">
-        <h3>Request a Bulk Quote</h3>
+        <h3>Maintain Your Power</h3>
         <form id="notify-form">
-            <input type="text" id="name" placeholder="Full Name" required>
-            <input type="email" id="email" placeholder="Email Address" required>
-            <input type="tel" id="phone" placeholder="Phone Number" required>
-            <button type="submit">Submit Inquiry</button>
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <button type="submit">Order Distilled Water</button>
         </form>
     </div>
 
     <script>
-        // Responsive handling without page reload
         let player = document.getElementById('player');
-        let playerPosition = window.innerWidth / 2;
-
-        function updatePlayerPos() {
-            player.style.left = (playerPosition - 30) + 'px';
+        let playerPos = window.innerWidth / 2;
+        
+        // Update game objects to Battery Drop shapes
+        function spawnBatteryDrop() {
+            const drop = document.createElement('div');
+            drop.className = 'battery-drop';
+            drop.style.left = Math.random() * window.innerWidth + 'px';
+            drop.style.top = '-50px';
+            document.getElementById('game-area').appendChild(drop);
+            
+            let pos = -50;
+            let fall = setInterval(() => {
+                pos += 5;
+                drop.style.top = pos + 'px';
+                if (pos > window.innerHeight / 2) drop.remove();
+            }, 50);
         }
 
-        window.addEventListener('resize', () => {
-            // Simply update variables, do not reload!
-            updatePlayerPos();
+        setInterval(spawnBatteryDrop, 2000);
+        window.addEventListener('mousemove', (e) => {
+            player.style.left = (e.clientX - 35) + 'px';
         });
-
-        document.getElementById('notify-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you! Our sales team will contact you shortly regarding your Mr.Charge order.');
-        });
-
-        // Initialize
-        updatePlayerPos();
     </script>
 </body>
 </html>
