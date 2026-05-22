@@ -3,47 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr.Charge | Industrial Distilled Water</title>
+    <title>Mr.Charge | Charge Your Battery</title>
     <style>
         :root { --y: #f1c40f; --g: #2c3e50; --b: #3498db; --dark: #0f0f0f; }
         body { margin: 0; font-family: 'Inter', sans-serif; background: var(--dark); color: #fff; }
 
-        /* Enhanced Game Area */
+        /* Game Area */
         #game-area { 
-            width: 100%; height: 350px; background: linear-gradient(to bottom, #1a1a1a, #000); 
-            position: relative; overflow: hidden; border-bottom: 3px solid var(--y); cursor: none;
+            width: 100%; height: 350px; background: linear-gradient(180deg, #1a1a1a 0%, #000 100%); 
+            position: relative; overflow: hidden; border-bottom: 4px solid var(--y); cursor: none;
         }
         #player { 
             position: absolute; width: 90px; height: 70px; bottom: 20px; 
-            background: rgba(44, 62, 80, 0.8); border: 2px solid var(--y); 
+            background: rgba(44, 62, 80, 0.9); border: 3px solid var(--y); 
             border-radius: 8px; display: flex; align-items: center; justify-content: center; 
-            font-size: 35px; backdrop-filter: blur(5px); transition: transform 0.05s;
+            font-size: 35px; transition: transform 0.05s; z-index: 10;
         }
-        .drop { position: absolute; width: 15px; height: 25px; background: var(--b); border-radius: 0 0 15px 15px; box-shadow: 0 0 10px var(--b); }
-        #score { position: absolute; top: 20px; left: 20px; font-size: 20px; font-weight: bold; color: var(--y); }
+        .drop { 
+            position: absolute; width: 15px; height: 25px; background: var(--b); 
+            border-radius: 0 0 15px 15px; box-shadow: 0 0 15px var(--b);
+        }
+        #charge-meter { 
+            position: absolute; top: 20px; left: 20px; font-size: 24px; 
+            font-weight: 800; color: var(--y); text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+        }
 
-        /* Gallery Grid */
+        /* Gallery */
         .container { max-width: 1000px; margin: auto; padding: 40px 20px; }
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
         .card { height: 220px; background: #222; border-radius: 10px; overflow: hidden; border: 1px solid #333; transition: 0.3s; }
         .card:hover { border-color: var(--y); transform: translateY(-5px); }
-        .card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        .card img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Social Section */
-        .footer { text-align: center; padding: 50px; border-top: 1px solid #333; }
-        .btn { padding: 12px 30px; background: var(--y); color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; margin: 10px; }
+        .footer { text-align: center; padding: 50px; }
+        .btn { padding: 12px 30px; background: var(--y); color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; margin: 10px; display: inline-block;}
     </style>
 </head>
 <body>
 
     <div id="game-area">
-        <div id="score">Bottles Caught: 0</div>
+        <div id="charge-meter">Battery: 0%</div>
         <div id="player">🔋</div>
     </div>
 
     <div class="container">
         <h1 style="text-align: center; color: var(--y);">MR.CHARGE SOLUTIONS</h1>
-        <p style="text-align: center;">Keeping your Solar and Lead-Acid systems charged with pure distilled water.</p>
+        <p style="text-align: center;">Pure distilled water for your battery's health.</p>
 
         <div class="gallery">
             <div class="card"><img src="https://images.unsplash.com/photo-1595052737606-538965045a55?w=600" alt="Battery"></div>
@@ -53,14 +58,14 @@
     </div>
 
     <div class="footer">
-        <a href="https://facebook.com/mrcharge0" class="btn">VISIT FACEBOOK</a>
-        <a href="#" class="btn" style="background: var(--b); color: white;">WHATSAPP US</a>
+        <a href="https://facebook.com/mrcharge0" class="btn">FOLLOW ON FACEBOOK</a>
+        <a href="#" class="btn" style="background: var(--b); color: white;">WHATSAPP ORDER</a>
     </div>
 
     <script>
-        let score = 0;
+        let charge = 0;
         const player = document.getElementById('player');
-        const scoreEl = document.getElementById('score');
+        const chargeEl = document.getElementById('charge-meter');
 
         // Movement
         window.addEventListener('mousemove', (e) => {
@@ -73,27 +78,31 @@
             const drop = document.createElement('div');
             drop.className = 'drop';
             drop.style.left = Math.random() * (window.innerWidth - 20) + 'px';
+            drop.style.top = '-30px';
             document.getElementById('game-area').appendChild(drop);
             
             let pos = 0;
             let fall = setInterval(() => {
-                pos += 8;
+                pos += 7;
                 drop.style.top = pos + 'px';
                 
-                // Collision Detection
                 let pRect = player.getBoundingClientRect();
                 let dRect = drop.getBoundingClientRect();
                 
                 if (dRect.top > pRect.top && dRect.left > pRect.left && dRect.left < pRect.right) {
-                    score++;
-                    scoreEl.innerText = "Bottles Caught: " + score;
+                    if (charge < 100) {
+                        charge += 5;
+                        chargeEl.innerText = "Battery: " + charge + "%";
+                        // Visual feedback when full
+                        if(charge === 100) chargeEl.style.color = "#2ecc71";
+                    }
                     drop.remove();
                     clearInterval(fall);
                 }
                 
                 if (pos > 350) { drop.remove(); clearInterval(fall); }
             }, 30);
-        }, 1000);
+        }, 800);
     </script>
 </body>
 </html>
